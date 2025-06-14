@@ -32,3 +32,6 @@ dependencies:
   - name: pgsql-ha
     version: 0.1.1
     repository: "file://charts/pgsql-ha"
+  - name: postgres-exporter
+    version: 0.1.0
+    repository: "file://charts/postgres-exporter"

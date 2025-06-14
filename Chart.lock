@@ -8,5 +8,8 @@ dependencies:
 - name: pgsql-ha
   repository: file://charts/pgsql-ha
   version: 0.1.1
-digest: sha256:d4e506a9a54f0b1539a7ae09f058833018e14050e9164368ececc167a841813b
-generated: "2025-06-13T15:28:21.197283+02:00"
+- name: postgres-exporter
+  repository: file://charts/postgres-exporter
+  version: 0.1.0
+digest: sha256:299edc2839c43078edf20b57af742a0bd43f1ad3c27bde546fb8c0f248a7fb67
+generated: "2025-06-14T11:15:36.250151455+02:00"

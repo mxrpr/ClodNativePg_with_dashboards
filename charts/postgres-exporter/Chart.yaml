@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres-exporter
+description: A Helm chart for deploying PostgreSQL Exporter
+type: application
+version: 0.1.0
+appVersion: "0.10.0"  # exporter version, you can update this as needed
