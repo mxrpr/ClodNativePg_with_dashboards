@@ -1,0 +1,41 @@
+# my-monitoring/charts/pgsql-ha/templates/pgsql-ha.yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Release.Name }}-pg-cluster
+  namespace: {{ .Release.Namespace }}
+spec:
+  instances: {{ .Values.instances }}
+
+  # Using imageName as specified by you
+  imageName: "quay.io/enterprisedb/postgresql:16.2" # Ensure this matches your desired version
+
+  # CRITICAL FIX: Security Context for Volume Permissions
+  template:
+    spec:
+      securityContext:
+        runAsUser: 26    # Run as postgres user
+        runAsGroup: 26   # Run as postgres group
+        fsGroup: 26      # Ensure volume is owned by fsGroup 26, allowing write access
+
+  # Using 'storage' field as specified by you (newer CNPG convention)
+  storage:
+    size: {{ .Values.storage.size }}
+    storageClass: {{ .Values.storage.storageClass | quote }}
+
+  bootstrap:
+    initdb:
+      database: my_application_db # Your application database name
+      owner: my_app_user
+        password:
+          secretKeyRef:
+            name: my-app-user-password # The name of the Secret you just created
+            key: password        # Your application database user
+      dataChecksums: true       # Recommended for data integrity
+      
+      # --- CORRECTED: Using postInitSQL (inline SQL) as you intended ---
+      # This removes the dependency on mounting a ConfigMap for SQL execution.
+      postInitApplicationSQLRefs:
+        configMapRefs:
+          - name: my-monitoring-initdb-sql # This must match your ConfigMap name
+            key: my_schema.sql  

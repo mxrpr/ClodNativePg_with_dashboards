@@ -1,0 +1,9 @@
+# charts/pgsql-ha/values.yaml
+instances: 3
+version: "17.5" # This should match the major version of imageName
+storage:
+  size: 1Gi
+  storageClass: "standard" # Or your specific storage class
+# You might also add fields here to control the database and owner names
+# customDatabase: my_application_db
+# customUser: my_app_user

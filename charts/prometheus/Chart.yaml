@@ -1,0 +1,5 @@
+apiVersion: v2
+name: prometheus
+description: A Helm chart for Grafana
+version: 0.1.1
+appVersion: "9.0"  # or whatever Grafana version you target

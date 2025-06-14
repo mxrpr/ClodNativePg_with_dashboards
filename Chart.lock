@@ -1,0 +1,12 @@
+dependencies:
+- name: grafana
+  repository: file://charts/grafana
+  version: 0.1.1
+- name: prometheus
+  repository: file://charts/prometheus
+  version: 0.1.1
+- name: pgsql-ha
+  repository: file://charts/pgsql-ha
+  version: 0.1.1
+digest: sha256:d4e506a9a54f0b1539a7ae09f058833018e14050e9164368ececc167a841813b
+generated: "2025-06-13T15:28:21.197283+02:00"
