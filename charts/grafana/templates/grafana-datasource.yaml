@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  labels:
+    grafana_datasource: "1"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: my-pg-monitor
+    meta.helm.sh/release-namespace: default
+data:
+  prometheus.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: MXRPrometheus
+        type: prometheus
+        access: proxy
+        url: http://my-pg-monitor-prometheus.default.svc.cluster.local:80
+        isDefault: true
+        editable: false

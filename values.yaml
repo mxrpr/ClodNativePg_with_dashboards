@@ -32,9 +32,11 @@ grafana:
 # Common nodeSelector (example, optional)
 nodeSelector: {}
 
-postgresql:
-  instances: 3
-  version: "15"
+
+psql-ha:
+  instances: 2
+  version: "16.2"
   storage:
+    existingClaim: pg-hostpath-pvc
     size: 1Gi
-    storageClass: standard
+    storageClass: "standard"

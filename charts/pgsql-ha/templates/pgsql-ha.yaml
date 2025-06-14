@@ -37,8 +37,9 @@ spec:
             runAsGroup: 0
 
   storage:
-    size: {{ .Values.storage.size }}
-    storageClass: {{ .Values.storage.storageClass | quote }}
+    #existingClaim: {{ .Values.storage.existingClaim }}
+    size: "{{ .Values.storage.size }}"
+    storageClass: {{ .Values.storage.storageClass }}
 
   bootstrap:
     initdb:
